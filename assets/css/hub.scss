@@ -139,41 +139,38 @@
   }
 }
 
-// Media Query for Mobile Responsiveness
+
 @media (max-width: 768px) {
   .hub-section {
     width: calc(50% - 1rem); // Two items per row on medium screens
   }
-// Responsive Adjustments
-@media (max-width: 768px) {
+
   #visualization-container {
     padding: 1rem;
     margin: 1rem;
   }
-
   .hero-message p {
     font-size: 1.2rem;
     &:first-child {
       font-size: 1.5rem;
     }
   }
-
   .about-section h2,
   .contact-us h2 {
     font-size: 2rem;
   }
-
   .about-section p,
   .contact-us p {
     font-size: 1rem;
   }
-
   .node text {
     font-size: 16px;
   }
 }
-
 @media (max-width: 480px) {
+  .hub-section {
+    width: 100%; // One item per row on small screens
+  }
   .hero-message p {
     font-size: 1rem;
     &:first-child {
@@ -184,10 +181,6 @@
   .about-section h2,
   .contact-us h2 {
     font-size: 1.5rem;
-  }
-
-  .node text {
-    font-size: 14px;
   }
 }
 
