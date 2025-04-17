@@ -4,61 +4,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&family=Poppins:wght@400;500&family=Lora&family=Inter&family=Pacifico&display=swap" rel="stylesheet">
 {{ end }}
 
-{{ define "main" }}    
-    {{ $langData := index .Site.Data.hub .Language.Lang }}
-    
-    <!-- Hero Section -->
-    <section class="hero-message fade-in-up" role="banner" aria-label="Welcome Message">
-        <div class="container">
-            <p class="neon-glow hover-lift">{{ with $langData.heroMessageLine1 }}{{ . }}{{ else }}Stop the endless search. Your curated path to English fluency starts now, completely free.{{ end }}</p>
-            <p>{{ with $langData.heroMessageLine2 }}{{ . }}{{ else }}We've mapped out your learning journey. Simply click and begin your transformation today!{{ end }}</p>
-        </div>
-    </section>
-
-    <!-- Visualization Section -->
-    <section class="visualization fade-in-up" role="region" aria-label="Learning Pathway Visualization">
-        <p class="description">{{ with $langData.visualizationDescription }}{{ . }}{{ else }}Click on the nodes to explore resources.{{ end }}</p>
-        <div id="visualization-container" class="visualization-container"></div>
-    </section>
-
-    <!-- About Section -->
-    <section class="about-section fade-in-up" role="region" aria-label="About Your Pathway">
-        <div class="container">
-            <h2 class="neon-glow hover-lift">{{ with $langData.aboutSectionHeading }}{{ . }}{{ else }}Your Pathway to English Success{{ end }}</h2>
-            <p>{{ with $langData.aboutSectionParagraph1 }}{{ . | safeHTML }}{{ else }}Welcome to <strong>Your Pathway to English Success</strong>...{{ end }}</p>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section class="contact-us fade-in-up" role="region" aria-label="Contact Us">
-        <div class="container">
-            <h2 class="neon-glow hover-lift">{{ with $langData.contactUsHeading }}{{ . }}{{ else }}Unsure Where to Begin? Let Us Guide You.{{ end }}</h2>
-            <p>{{ with $langData.contactUsParagraph }}{{ . | safeHTML }}{{ else }}Feeling lost? Don't worry, we're here to help!{{ end }}</p>
-            <a href="{{ "/en/contact/" | relLangURL }}" class="btn btn-primary neon-glow pulse-glow" aria-label="Contact Us">Get in Touch</a>
-        </div>
-    </section>
-{{ end }}
-
-{{ define "scripts" }}
-    {{ $d3 := resources.Get "js/d3.v7.min.js" | minify | fingerprint }}
-    <script src="{{ $d3.Permalink }}" integrity="{{ $d3.Data.Integrity }}"></script>
+{{ define "main" }}
+    <div id="visualization-container" style="margin: 20px;"></div>
     <script>
         window.hubData = {
-            lang: {{ .Language.Lang | jsonify | safeJS }},
-            sections: [
-                {{ range $section := (index .Site.Data.hub .Language.Lang).sections }}
-                {
-                    name: {{ $section.name | jsonify | safeJS }},
-                    links: [
-                        {{ range $link := $section.links }}
-                        { url: {{ $link.url | jsonify | safeJS }}, name: {{ $link.name | jsonify | safeJS }} },
-                        {{ end }}
-                    ]
-                },
-                {{ end }}
-            ]
+            root: `{{ .Site.Data.hub.sections | jsonify }}`
         };
     </script>
-    {{ $hub := resources.Get "js/hub.js" | minify | fingerprint }}
-    <script src="{{ $hub.Permalink }}" integrity="{{ $hub.Data.Integrity }}"></script>
+    {{ $hubjs := resources.Get "js/hub.js" | minify | fingerprint }}
+    <script src="{{ $hubjs.Permalink }}" integrity="{{ $hubjs.Data.Integrity }}"></script>
 {{ end }}
