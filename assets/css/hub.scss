@@ -1,162 +1,55 @@
-// assets/css/hub.scss
 @import "_variables";
 
-// Visualization Container
-#visualization-container {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: var(--card-bg);
-  z-index: 1000; // Ensure it's on top
-}
-
-// Message before the tree
-.visualization-message {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 1.5rem;
-  color: var(--text-color);
-  font-family: var(--font-body);
-  text-align: center;
-  z-index: 1001; // Above the SVG
-}
-
-svg {
-  width: 100%;
-  height: 100%;
-}
-
-.node {
-  cursor: pointer;
-}
-
-
-// Nodes
 .node circle {
-  transition: var(--transition-base);
+  fill: #fff;
+  stroke: steelblue;
+  stroke-width: 3px;
 }
 
-// Hub Section (Each Category)
-.hub-section {
-    .node--internal circle {
-        fill: var(--node-internal);
-        stroke: var(--node-stroke);
-        stroke-width: 2px;
-    }
-    .node--internal text {
-        fill: var(--text-color);
-        font-family: var(--font-body);
-        font-size: 1rem;
-    }
-    .node--leaf circle {
-        fill: var(--node-leaf);
-    }
-    .node--leaf text {
-        fill: var(--link-color);
-        font-family: var(--font-body);
-        font-size: 0.9rem;
-    }
+.node text {
+  font-size: 20px;
+  font-family: var(--font-body);
 }
 
-// Hero Section
-.hero-message {
-  text-align: center;
-  padding: 2rem 1rem;
-  p {
-    font-size: 1.5rem;
-    color: var(--text-color);
-    margin: 0.5rem 0;
-    font-family: var(--font-body);
-    line-height: 1.6;
-    &:first-child {
-      font-size: 2rem;
-      font-weight: 600;
-      color: var(--heading-color);
-    }
+.link {
+  fill: none;
+  stroke: #ccc;
+  stroke-width: 2px;
+}
+
+.collapsed-node {
+  fill: lightsteelblue !important;
+}
+
+.open-node {
+  fill: #fff !important;
+}
+
+.node--internal {
+  .collapsed-node {
+    fill: lightsteelblue !important;
   }
 }
 
-// About Section
-.about-section {
-  padding: 2rem 1rem;
-  text-align: center;
-  h2 {
-    font-family: var(--font-primary);
-    font-size: 2.5rem;
-    color: var(--heading-color);
-    margin-bottom: 1rem;
-  }
-  p {
-    font-family: var(--font-body);
-    font-size: 1.2rem;
-    color: var(--text-color);
-    line-height: 1.6;
-    max-width: 800px;
-    margin: 0 auto;
-  }
+#visualization-container {
+  width: 100vw;
+  height: 800px;
 }
 
-// Contact Section
-.contact-us {
-  padding: 2rem 1rem;
-  text-align: center;
-  h2 {
-    font-family: var(--font-primary);
-    font-size: 2.5rem;
-    color: var(--heading-color);
-    margin-bottom: 1rem;
-  }
-  p {
-    font-family: var(--font-body);
-    font-size: 1.2rem;
-    color: var(--text-color);
-    line-height: 1.6;
-    max-width: 800px;
-    margin: 0 auto 1.5rem;
-  }
-  .btn-primary {
-    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
-    color: var(--white);
-    padding: 0.75rem 1.5rem;
-    border-radius: var(--border-radius);
-    text-decoration: none;
-    font-family: var(--font-ui);
-    font-weight: 500;
-    transition: var(--transition-base);
-      transform: translateY(-4px);
-      box-shadow: var(--subtle-shadow);
-    }
-  }
-}
-
-
-// Links
-.link {\n  fill: none;\n  stroke: var(--link-color);\n  stroke-width: 2px;\n}
-
-
-// Media Queries for Responsiveness
 @media (max-width: 1024px) {
-    .node text {
-        font-size: 0.8rem;
-    }
-}
-@media (max-width: 768px) {
-    .node text {
-        font-size: 0.7rem;
-    }
-}
-@media (max-width: 576px) {
-    .node text {
-        font-size: 0.6rem;
-    }
-}
+  .node text {
+    font-size: 0.8rem;
+  }
 }
 
-@media (max-width: 480px) {
-  .hub-section {
-    width: 100%; // One item per row on small screens
+@media (max-width: 768px) {
+  .node text {
+    font-size: 0.7rem;
   }
+}
+
+@media (max-width: 576px) {
+  .node text {
+    font-size: 0.6rem;
+  }
+}
