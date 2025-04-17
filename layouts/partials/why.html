@@ -1,0 +1,83 @@
+{{/* Get correct language and section data */}}
+{{ $section := .Section }}
+{{ $data := index .Site.Data.B3WHY .Lang $section }}
+
+<div class="journey-section fade-in-up" role="region" aria-label="Teacher's Journey">
+    <div class="glow glow-1"></div>
+    <div class="glow glow-2"></div>
+    
+    <h2 class="neon-glow hover-lift"><span class="compass-icon">{{ $data.icon | default "🧭" }}</span> {{ $data.title }}</h2>
+    
+    <p class="intro-text">{{ $data.intro_text }}</p>
+    
+    <!-- Interactive Journey Visualizer -->
+    <div class="journey-visualizer">
+        <div class="journey-track">
+            <div class="journey-line"></div>
+            <div class="journey-progress glow-progress" id="journeyProgress"></div>
+            <div class="journey-steps">
+                {{ range $index, $step := $data.journey_steps }}
+                <div class="journey-step{{ if eq $index 0 }} active{{ end }} pulse-glow" data-step="{{ add $index 1 }}" role="button" tabindex="0" aria-label="Step {{ add $index 1 }}: {{ $step.text }}">
+                    <div class="step-icon neon-glow">{{ $step.icon }}</div>
+                    <div class="step-text">{{ $step.text }}</div>
+                </div>
+                {{ end }}
+            </div>
+        </div>
+    </div>
+    
+    <!-- Stats Row -->
+    <div class="stats-row">
+        {{ range $data.stats }}
+        <div class="stat-card glassmorphism fade-in-up" data-value="{{ .value }}">
+            <div class="stat-number neon-glow">{{ .value }}{{ .suffix }}</div>
+            <div class="stat-text">{{ .text }}</div>
+        </div>
+        {{ end }}
+    </div>
+    
+    <!-- Benefits Grid -->
+    <div class="benefits-grid">
+        {{ range $data.benefits }}
+        <div class="benefit-card glassmorphism fade-in-up">
+            <div class="benefit-icon neon-glow">{{ .icon }}</div>
+            <div class="benefit-title neon-glow">{{ .title }}</div>
+            <p class="benefit-text">{{ .text }}</p>
+        </div>
+        {{ end }}
+    </div>
+    
+    <!-- Interactive Testimonial Card -->
+    {{ with $data.testimonial }}
+    <div class="testimonial-card glassmorphism fade-in-up" role="article">
+        <blockquote class="testimonial-text">{{ .text }}</blockquote>
+        <div class="testimonial-author">
+            <div class="author-avatar">{{ .author.avatar }}</div>
+            <div class="author-details">
+                <div class="author-name neon-glow">{{ .author.name }}</div>
+                <div class="author-title">{{ .author.title }}</div>
+                <div class="testimonial-result">{{ .author.result }}</div>
+            </div>
+        </div>
+    </div>
+    {{ end }}
+    
+    <!-- Interactive CTA -->
+    {{ with $data.cta }}
+    <div class="cta-container fade-in-up">
+        <div class="cta-inner glassmorphism">
+            <h3 class="cta-title neon-glow">{{ .title }}</h3>
+            <p class="cta-text">{{ .text }}</p>
+            <button class="cta-button neon-glow pulse-glow" id="ctaButton" aria-label="{{ .button_text }}">{{ .button_text }}</button>
+            <div class="availability-badge">
+                <span class="pulse"></span>
+                {{ .availability }}
+            </div>
+        </div>
+    </div>
+    {{ end }}
+</div>
+
+<!-- Load why.js -->
+{{ $whyJS := resources.Get "js/why.js" | minify | fingerprint }}
+<script src="{{ $whyJS.Permalink }}" integrity="{{ $whyJS.Data.Integrity }}"></script>

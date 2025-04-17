@@ -1,0 +1,17 @@
+[copyright]
+other = "© {{ .Year }} English By Moslemy. All rights reserved."
+
+[quick_links]
+other = "Quick Links"
+
+[follow_us]
+other = "Follow Us"
+
+[home]
+other = "Home"
+
+[about]
+other = "About"
+
+[contact]
+other = "Contact"

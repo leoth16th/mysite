@@ -1,0 +1,45 @@
+title: "Unlock Your TOEFL Success: Proven Strategies & Expert Guidance"
+intro_text: "More than just TOEFL prep, I offer a transformative journey tailored to your unique goals. With expert guidance and a genuine commitment to your success, we'll achieve your target score."
+journey_steps:
+  - icon: "📋"
+    text: "Assessment"
+  - icon: "🎯"
+    text: "Strategy"
+  - icon: "🔄"
+    text: "Practice"
+  - icon: "📈"
+    text: "Progress"
+  - icon: "🏆"
+    text: "Success"
+stats:
+  - value: 90
+    suffix: "%"
+    text: "90% Target Score Achievement"
+  - value: 25
+    suffix: "+"
+    text: "Average 25+ Score Improvement"
+  - value: 250
+    suffix: "+"
+    text: "250+ Successful TOEFL Journeys"
+benefits:
+  - icon: "🎯"
+    title: "Personalized TOEFL Strategies"
+    text: "Tailored plans to address the TOEFL's unique challenges and your specific needs."
+  - icon: "🧠"
+    title: "Expert TOEFL Insights"
+    text: "Gain a competitive edge with deep understanding of scoring and examiner expectations."
+  - icon: "⚡"
+    title: "Build TOEFL Confidence"
+    text: "Proven techniques to manage stress and maximize performance on test day."
+testimonial:
+  text: "I struggled with the TOEFL speaking section, but this approach helped me improve my score by 25 points in just one month!"
+  author:
+    name: "Ahmed R."
+    title: "University Applicant"
+    avatar: "A"
+    result: "Score 110 Achievement"
+cta:
+  title: "Ace Your TOEFL: Start Your Journey Today"
+  text: "Let's Achieve Your Dream TOEFL Score"
+  button_text: "Begin Your Personalized TOEFL Journey"
+  availability: "Limited Spots Available: Only 2 Coaching Slots Left!"

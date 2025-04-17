@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.Language.Lang }}" dir="{{ if eq .Language.Lang "fa" }}rtl{{ else }}ltr{{ end }}" data-theme="light" data-bs-theme="light">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="{{ .Description }}">
+    <title>{{ .Title }} | {{ .Site.Title }}</title>
+    
+    <!-- Common CSS -->
+    {{ $main := resources.Get "css/main.scss" | toCSS | minify | fingerprint }}
+    <link rel="stylesheet" href="{{ $main.Permalink }}" integrity="{{ $main.Data.Integrity }}">
+    
+    {{ $custom := resources.Get "css/custom.scss" | toCSS | minify | fingerprint }}
+    <link rel="stylesheet" href="{{ $custom.Permalink }}" integrity="{{ $custom.Data.Integrity }}">
+    
+    <!-- External Resources -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Poppins&family=Lora&family=Inter&family=Pacifico&family=Dancing+Script&display=swap" rel="stylesheet">
+    
+    <!-- Conditional CSS for homepage -->
+    {{ if .IsHome }}
+        {{ $home := resources.Get "css/home.scss" | toCSS | minify | fingerprint }}
+        <link rel="stylesheet" href="{{ $home.Permalink }}" integrity="{{ $home.Data.Integrity }}">
+    {{ end }}
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    {{ block "styles" . }}{{ end }}
+</head>
+<body class="d-flex flex-column min-vh-100 {{ if eq .Language.Lang "fa" }}lang-fa{{ else }}lang-en{{ end }}">
+    <!-- Reading Progress Bar -->
+    <div id="reading-progress" class="position-fixed top-0 start-0 z-index-1000"></div>
+    
+    {{ partial "header.html" . }}
+    <main class="container mx-auto py-8">
+        {{ block "main" . }}{{ end }}
+    </main>
+    {{ partial "footer.html" . }}
+    
+    <!-- Common Scripts -->
+    {{ $bootstrapJS := resources.Get "js/bootstrap.bundle.min.js" | minify | fingerprint }}
+    <script src="{{ $bootstrapJS.Permalink }}" integrity="{{ $bootstrapJS.Data.Integrity }}"></script>
+    
+    {{ $themeToggle := resources.Get "js/theme-toggle.js" | minify | fingerprint }}
+    <script src="{{ $themeToggle.Permalink }}" integrity="{{ $themeToggle.Data.Integrity }}"></script>
+    
+    {{ $blogJS := resources.Get "js/blog.js" | minify | fingerprint }}
+    <script src="{{ $blogJS.Permalink }}" integrity="{{ $blogJS.Data.Integrity }}"></script>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            lucide.createIcons();
+        });
+    </script>
+    
+    {{ block "scripts" . }}{{ end }}
+</body>
+</html>

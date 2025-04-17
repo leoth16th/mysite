@@ -1,0 +1,768 @@
+@import "_variables";
+.resources-section .text-light,
+.resources-section .carousel-item.text-light,
+.resources-section .resource-card.text-light {
+  color: inherit !important;
+  --bs-text-opacity: 1 !important;
+}
+// Resources Section (from blocktwo.scss)
+section.resources-section[role="region"] {
+  background: var(--body-bg)!important; // Light background (#F5F5FA in light mode)
+  padding: 2rem;
+  border-radius: 15px;
+  box-shadow: var(--box-shadow); // Subtle shadow
+  color: var(--text-color) !important; // Ensure parent color  margin-bottom: 3rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.resources-section .resources-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.resources-section .resources-title {
+  font-family: var(--font-primary); // 'Montserrat', sans-serif
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: var(--heading-color); // #5A1A85 in light mode
+  margin: 0 0 1rem;
+}
+
+.resources-section .resources-intro {
+  font-family: var(--font-body); // 'Lora', serif
+  font-size: 1.2rem;
+  line-height: 1.6;
+  color: var(--text-color);
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.resources-section .carousel-item {
+  transition: transform 0.5s ease-in-out;
+  width: 100%; // Add this
+}
+
+.resources-section .resource-card {
+  background: rgba(106, 27, 154, 0.1)!important; // Subtle shade of primary color (#6A1B9A)  border-radius: 15px;
+  min-height: 250px;
+  padding: 1.5rem;
+  transition: var(--transition-base); // Smooth transition
+  opacity: 1 !important; // Prevent opacity issues
+}
+
+.resources-section .resource-card:hover {
+  transform: translateY(-5px); // Subtle lift on hover
+  box-shadow: var(--subtle-shadow);
+}
+
+.resources-section .resource-icon {
+  color: var(--primary-color); // #6A1B9A
+  margin-bottom: 1rem;
+  font-size: 2rem;
+}
+
+.resources-section .carousel-item .resource-card .resource-card-title {
+  font-family: var(--font-primary);
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--heading-color) !important;
+  margin-bottom: 1rem;
+  opacity: 1 !important;
+}
+
+.resources-section .carousel-item .resource-card .resource-card-text {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  color: var(--text-color) !important;
+  line-height: 1.6;
+  opacity: 1 !important;
+
+}
+
+.resources-section .carousel-control-prev,
+.resources-section .carousel-control-next {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  background: var(--primary-color); // #6A1B9A
+  transition: var(--transition-base);
+}
+
+.resources-section .carousel-control-prev:hover,
+.resources-section .carousel-control-next:hover {
+  background: var(--secondary-color); // #4A6E4A
+  transform: translateY(-2px);
+}
+
+.resources-section .carousel-indicators button {
+  background-color: var(--gray-medium); // #B0BEC5
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  transition: var(--transition-base);
+}
+
+.resources-section .carousel-indicators .active {
+  background-color: var(--primary-color); // #6A1B9A
+}
+
+.resources-section .teaser-title {
+  font-family: var(--font-primary);
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: var(--heading-color);
+  margin-bottom: 1rem;
+}
+
+.resources-section .teaser-text {
+  font-family: var(--font-body);
+  font-size: 1.2rem;
+  color: var(--text-color);
+  line-height: 1.6;
+}
+
+.resources-section .cta-button {
+  background: linear-gradient(45deg, var(--primary-color), var(--secondary-color)); // Gradient like hub.scss
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--border-radius); // 12px
+  font-family: var(--font-ui); // 'Inter', sans-serif
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--white);
+  transition: var(--transition-base);
+}
+
+.resources-section .cta-button:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--subtle-shadow);
+}
+
+.resources-section .cta-subtext {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  color: var(--text-color);
+  margin-top: 0.5rem;
+}
+
+.resources-section .cta-link {
+  color: var(--heading-color);
+  transition: var(--transition-base);
+  text-decoration: underline;
+}
+
+.resources-section .cta-link:hover {
+  color: var(--secondary-color);
+}
+
+@media (max-width: 768px) {
+  .resources-section { padding: 1rem; }
+  .resources-section .resource-card { padding: 1rem; }
+  .resources-section .resources-title { font-size: 2rem; }
+  .resources-section .cta-button { width: 100%; text-align: center; }
+}
+
+// Roadmap Section (from roadmap.scss)
+.roadmap {
+  background: var(--body-bg);
+  padding: 2rem;
+  border-radius: 15px;
+  box-shadow: var(--box-shadow);
+  max-width: 80rem;
+  margin: 0 auto 3rem;
+  position: relative;
+  color: var(--text-color);
+  display: flex; // Add this
+  flex-direction: column; // Add this
+  align-items: center; // Add this
+}
+
+.roadmap-header {
+  text-align: center;
+  margin-bottom: 2rem;
+  display: flex; // Add this
+  flex-direction: column; // Add this
+  align-items: center; // Add this
+  width: 100%; // Add this to ensure it takes full width
+}
+
+.roadmap-header h1 {
+  color: var(--heading-color);
+  font-size: 2.5rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  font-family: var(--font-primary);
+}
+
+.roadmap-header p {
+  font-size: 1.2rem;
+  font-family: var(--font-body);
+  color: var(--text-color);
+  line-height: 1.6;
+}
+
+.roadmap-timeline {
+  position: relative;
+  margin-bottom: 2rem;
+}
+
+.timeline-track {
+  position: absolute;
+  height: 6px;
+  width: 100%;
+  background-color: var(--gray-medium);
+  top: 50%;
+  transform: translateY(-50%);
+  border-radius: 9999px;
+}
+
+.timeline-progress {
+  position: absolute;
+  height: 6px;
+  background: var(--primary-color);
+  top: 50%;
+  transform: translateY(-50%);
+  border-radius: 9999px;
+  transition: width 0.7s ease-in-out;
+}
+
+.timeline-points {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 1rem;
+}
+
+.timeline-point {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.point-button {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  transition: var(--transition-base);
+  cursor: pointer;
+  border: none;
+  outline: none;
+}
+
+.point-button:hover {
+  transform: translateY(-2px);
+}
+
+.point-button.active {
+  background: var(--primary-color);
+  color: var(--white);
+}
+
+.point-button:not(.active):not(.completed) {
+  background: var(--gray-medium);
+  color: var(--white);
+}
+
+.point-button:not(.active):not(.completed):hover {
+  background: var(--secondary-color);
+}
+
+.point-button.completed {
+  background: var(--secondary-color);
+  color: var(--white);
+  position: relative;
+}
+
+.point-button.completed::after {
+  content: "✓";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: var(--white);
+}
+
+.point-check {
+  display: none;
+}
+
+.point-button.completed .point-number {
+  display: none;
+}
+
+.point-button.completed .point-check {
+  display: block;
+}
+
+.point-title {
+  margin-top: 0.75rem;
+  font-size: 1.2rem;
+  font-weight: 500;
+  transition: color 0.3s;
+  color: var(--text-color);
+  font-family: var(--font-body);
+}
+
+.timeline-point.active .point-title {
+  color: var(--primary-color);
+}
+
+.roadmap-content {
+  @include glassmorphism;
+  padding: 1.5rem;
+  border-radius: 15px;
+  transition: all 0.5s;
+}
+
+.roadmap-content.animating {
+  opacity: 0;
+  transform: scale(0.95);
+}
+
+.step-content {
+  display: none;
+  font-size: 1.2rem;
+}
+
+.step-content.active {
+  display: block;
+}
+
+.step-header {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.step-icon {
+  background: var(--secondary-color);
+  color: var(--white);
+  padding: 1rem;
+  border-radius: 0.75rem;
+  box-shadow: var(--box-shadow);
+}
+
+.step-header h2 {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: var(--heading-color);
+  font-family: var(--font-primary);
+}
+
+.step-description {
+  margin-bottom: 1.5rem;
+  font-size: 1.2rem;
+  font-family: var(--font-body);
+  color: var(--text-color);
+  line-height: 1.6;
+}
+
+.step-tasks {
+  @include glassmorphism;
+  padding: 1.5rem;
+  border-radius: 0.75rem;
+}
+
+.step-tasks h3 {
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: var(--heading-color);
+  font-size: 1.3rem;
+  font-family: var(--font-primary);
+}
+
+.step-tasks ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.step-tasks li {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 1.2rem;
+  font-family: var(--font-body);
+  color: var(--text-color);
+}
+
+.task-number {
+  width: 1.5rem;
+  height: 1.5rem;
+  background: var(--primary-color);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-size: 0.9rem;
+  color: var(--white);
+}
+
+.step-navigation {
+  margin-top: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.prev-button, 
+.next-button {
+  padding: 0.75rem 1.25rem;
+  border-radius: var(--border-radius);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: var(--transition-base);
+  border: none;
+  outline: none;
+  cursor: pointer;
+  font-family: var(--font-ui);
+  font-weight: 500;
+}
+
+.prev-button:not([disabled]), 
+.next-button:not([disabled]) {
+  background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+  color: var(--white);
+}
+
+.prev-button:not([disabled]):hover, 
+.next-button:not([disabled]):hover {
+  transform: translateY(-2px);
+  box-shadow: var(--subtle-shadow);
+}
+
+.prev-button[disabled], 
+.next-button[disabled] {
+  background-color: var(--gray-medium);
+  color: var(--muted-text);
+  cursor: not-allowed;
+}
+
+@media (max-width: 768px) {
+  .roadmap { padding: 1rem; }
+  .point-button { width: 2rem; height: 2rem; }
+  .point-title { font-size: 0.875rem; }
+  .step-header { flex-direction: column; text-align: center; gap: 0.5rem; }
+  .step-navigation { flex-direction: column; gap: 1rem; }
+  .prev-button, .next-button { width: 100%; justify-content: center; }
+}
+
+// Journey Section (from why.scss)
+.journey-section {
+  background: var(--body-bg);
+  border-radius: 15px;
+  box-shadow: var(--box-shadow);
+  padding: 2rem;
+  margin-bottom: 3rem;
+  color: var(--text-color);
+}
+
+.journey-section h2 {
+  font-size: 2.5rem;
+  font-weight: 600;
+  margin: 0 0 1rem;
+  color: var(--heading-color);
+  font-family: var(--font-primary);
+}
+
+.journey-section .intro-text {
+  font-size: 1.2rem;
+  max-width: 800px;
+  margin-bottom: 2rem;
+  line-height: 1.6;
+  font-family: var(--font-body);
+  color: var(--text-color);
+}
+
+.journey-section .stats-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.journey-section .stat-card {
+  @include glassmorphism;
+  border-radius: 15px;
+  padding: 1.5rem;
+  flex: 1;
+  min-width: 200px;
+  text-align: center;
+  transition: var(--transition-base);
+  cursor: pointer;
+}
+
+.journey-section .stat-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--subtle-shadow);
+}
+
+.journey-section .stat-number {
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: var(--primary-color);
+  margin-bottom: 0.5rem;
+  font-family: var(--font-primary);
+}
+
+.journey-section .stat-text {
+  font-size: 1rem;
+  font-family: var(--font-body);
+  color: var(--text-color);
+  line-height: 1.6;
+}
+
+.journey-section .benefits-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+
+.journey-section .benefit-card {
+  @include glassmorphism;
+  border-radius: 15px;
+  padding: 1.5rem;
+  transition: var(--transition-base);
+  height: 100%;
+}
+
+.journey-section .benefit-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--subtle-shadow);
+}
+
+.journey-section .benefit-icon {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: var(--primary-color);
+}
+
+.journey-section .benefit-title {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: var(--heading-color);
+  font-family: var(--font-primary);
+}
+
+.journey-section .benefit-text {
+  color: var(--text-color);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.journey-section .testimonial-card {
+  @include glassmorphism;
+  border-radius: 15px;
+  padding: 1.5rem;
+  margin: 2rem 0;
+}
+
+.journey-section .testimonial-text {
+  font-style: italic;
+  font-size: 1.1rem;
+  line-height: 1.8;
+  margin-bottom: 1rem;
+  font-family: var(--font-accent); // 'Pacifico', cursive
+  color: var(--text-color);
+}
+
+.journey-section .testimonial-result {
+  background: rgba(46, 125, 50, 0.1);
+  color: var(--secondary-color);
+  padding: 0.5rem 1rem;
+  border-radius: 50px;
+  font-weight: 500;
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  display: inline-block;
+}
+
+.journey-section .cta-container {
+  position: relative;
+  background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+  border-radius: 15px;
+  padding: 2px;
+  margin-top: 3rem;
+}
+
+.journey-section .cta-inner {
+  @include glassmorphism;
+  border-radius: 13px;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.journey-section .cta-title {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: var(--heading-color);
+  font-family: var(--font-primary);
+}
+
+.journey-section .cta-text {
+  font-size: 1.2rem;
+  color: var(--text-color);
+  font-family: var(--font-body);
+  margin-bottom: 1rem;
+  line-height: 1.6;
+}
+
+.journey-section .cta-button {
+  background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+  color: var(--white);
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--border-radius);
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: var(--transition-base);
+  font-family: var(--font-ui);
+}
+
+.journey-section .cta-button:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--subtle-shadow);
+}
+
+.journey-section .availability-badge {
+  margin-top: 1rem;
+  background: rgba(255, 202, 40, 0.1);
+  color: var(--primary-color);
+  padding: 0.5rem 1rem;
+  border-radius: 50px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+}
+
+.journey-visualizer {
+  margin: 3rem 0;
+  position: relative;
+}
+
+.journey-track {
+  height: 120px;
+  @include glassmorphism;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+}
+
+.journey-steps {
+  position: relative;
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  z-index: 2;
+}
+
+.journey-line {
+  position: absolute;
+  top: 50%;
+  left: 40px;
+  right: 40px;
+  height: 6px;
+  background: var(--gray-medium);
+  transform: translateY(-50%);
+  border-radius: 9999px;
+}
+
+.journey-progress {
+  position: absolute;
+  top: 50%;
+  left: 40px;
+  height: 6px;
+  width: 0%;
+  background: var(--primary-color);
+  transform: translateY(-50%);
+  border-radius: 9999px;
+  transition: width 0.7s ease-in-out;
+}
+
+.journey-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  position: relative;
+  z-index: 3;
+}
+
+.journey-step .step-icon {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  background: var(--gray-medium);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  transition: var(--transition-base);
+  margin-bottom: 0.5rem;
+}
+
+.journey-step .step-text {
+  font-size: 1.2rem;
+  text-align: center;
+  transition: color 0.3s;
+  color: var(--text-color);
+  font-family: var(--font-body);
+}
+
+.journey-step:hover .step-icon {
+  transform: translateY(-2px);
+}
+
+.journey-step.active .step-icon {
+  background: var(--primary-color);
+  transform: translateY(-2px);
+}
+
+.journey-step.active .step-text {
+  color: var(--primary-color);
+  font-weight: 600;
+}
+
+.journey-step.completed .step-icon {
+  background: var(--secondary-color);
+  position: relative;
+}
+
+.journey-step.completed .step-icon::after {
+  content: "✓";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: var(--white);
+}
+
+@media (max-width: 768px) {
+  .journey-section { padding: 1rem; }
+  .journey-section .stats-row { flex-direction: column; }
+  .journey-section .benefits-grid { grid-template-columns: 1fr; }
+  .journey-steps { overflow-x: auto; padding-bottom: 1rem; }
+  .journey-step { margin: 0 1rem; }
+  .journey-track { overflow-x: auto; height: 140px; }
+}

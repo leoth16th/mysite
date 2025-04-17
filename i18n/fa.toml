@@ -1,0 +1,17 @@
+[copyright]
+other = "© {{ .Year }} انگلیسی با مسلمی. کلیه حقوق محفوظ است."
+
+[quick_links]
+other = "لینک‌های سریع"
+
+[follow_us]
+other = "ما را دنبال کنید"
+
+[home]
+other = "خانه"
+
+[about]
+other = "درباره ما"
+
+[contact]
+other = "تماس"

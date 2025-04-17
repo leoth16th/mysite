@@ -1,0 +1,47 @@
+{{ define "styles" }}
+    {{ $about := resources.Get "css/about.scss" | toCSS | minify | fingerprint }}
+    <link rel="stylesheet" href="{{ $about.Permalink }}" integrity="{{ $about.Data.Integrity }}">
+{{ end }}
+
+{{ define "main" }}
+  <!-- About Us Section -->
+  <section class="about-page fade-in-up" role="main" aria-label="About Morteza Moslemy">
+    <div class="main-content container">
+      <h1>{{ .Title }}</h1>
+      <div class="page-content">
+        <!-- Block 1: Text Left, Photo Right -->
+        <div class="image-text-block fade-in-up">
+          <div class="text-content">
+            {{ .Params.whoiam | markdownify }}
+          </div>
+          <img src="/images/morteza.webp" alt="Morteza Moslemy, IELTS and TOEFL Instructor" aria-label="Portrait of Morteza Moslemy" loading="lazy">
+        </div>
+
+        <!-- Block 2: Text Right, Photo Left -->
+        <div class="image-text-block fade-in-up flex-row-reverse">
+          <div class="text-content">
+            {{ .Params.myjourney | markdownify }}
+          </div>
+          <img src="/images/ai.webp" alt="Classroom Teaching Scene" aria-label="Classroom Teaching Scene" loading="lazy">
+        </div>
+
+        <!-- Block 3: Text Left, Photo Right -->
+        <div class="image-text-block fade-in-up">
+          <div class="text-content">
+            {{ .Params.Education | markdownify }}
+          </div>
+          <img src="/images/achievements.webp" alt="CELTA Certificate" class="celta-image" aria-label="CELTA Certificate" loading="lazy">
+        </div>
+
+        <!-- Remaining Content -->
+        <div id="more" class="fade-in-up">
+          {{ .Content }}
+          <div class="cta-section">
+            <h2>Ready to Master IELTS or TOEFL?</h2>
+            <a href="{{ "/en/contact/" | relLangURL }}" class="btn-primary" aria-label="Contact Morteza Moslemy">Get in Touch</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+{{ end }}

@@ -1,0 +1,147 @@
+baseURL = "https://englishbymoslemy.ir"
+title = "English By Moslemy"
+theme = "hugo-bootstrap-theme"
+themesdir = "node_modules/@filipecarneiro"
+defaultContentLanguage = "en"
+defaultContentLanguageInSubdir = true  # Enable language prefix for default language
+
+[build]
+  writeStats = true
+  [build.buildStats]
+    enable = true
+
+
+[languages]
+  [languages.en]
+    languageName = "English"
+    weight = 1
+    title = "English By Moslemy"
+    contentDir = "content/en"
+    [languages.en.params]
+      displayName = "English By Moslemy (English)"
+      rtl = false
+      languageISO = "EN"
+
+    [languages.en.menu]
+      [[languages.en.menu.main]]
+        identifier = "home"
+        name = "Home"
+        url = "/en/"  # Updated to include language prefix
+        weight = 1
+      [[languages.en.menu.main]]
+        identifier = "hub"
+        name = "Hub"
+        url = "/en/hub/"
+        weight = 2
+      [[languages.en.menu.main]]
+        identifier = "ielts"
+        name = "IELTS"
+        url = "/en/ielts/"
+        weight = 3
+      [[languages.en.menu.main]]
+        identifier = "toefl"
+        name = "TOEFL"
+        url = "/en/toefl/"
+        weight = 4
+      [[languages.en.menu.main]]
+        identifier = "general-english"
+        name = "General English"
+        url = "/en/general-english/"
+        weight = 5
+      [[languages.en.menu.main]]
+        identifier = "blog"
+        name = "Blog"
+        url = "/en/blog/"
+        weight = 6
+      [[languages.en.menu.main]]
+        identifier = "contact"
+        name = "Contact"
+        url = "/en/contact/"
+        weight = 7
+      [[languages.en.menu.main]]
+        identifier = "about"
+        name = "About"
+        url = "/en/about/"
+        weight = 8
+
+  [languages.fa]
+    languageName = "فارسی"
+    weight = 2
+    title = "انگلیسی با مسلمی"
+    contentDir = "content/fa"
+    languageDirection = "rtl"
+    languageISO = "FA"
+    [languages.fa.params]
+      displayName = "انگلیسی با مسلمی"
+      rtl = true
+    [languages.fa.menu]
+      [[languages.fa.menu.main]]
+        identifier = "home"
+        name = "خانه"
+        url = "/fa/"
+        weight = 1
+      [[languages.fa.menu.main]]
+        identifier = "hub"
+        name = "منابع انگلیسی"
+        url = "/fa/hub/"
+        weight = 2
+      [[languages.fa.menu.main]]
+        identifier = "ielts"
+        name = "آیلتس"
+        url = "/fa/ielts/"
+        weight = 3
+      [[languages.fa.menu.main]]
+        identifier = "toefl"
+        name = "تافل"
+        url = "/fa/toefl/"
+        weight = 4
+      [[languages.fa.menu.main]]
+        identifier = "general-english"
+        name = "انگلیسی عمومی"
+        url = "/fa/general-english/"
+        weight = 5
+      [[languages.fa.menu.main]]
+        identifier = "blog"
+        name = "بلاگ"
+        url = "/fa/blog/"
+        weight = 6
+      [[languages.fa.menu.main]]
+        identifier = "contact"
+        name = "تماس با ما"
+        url = "/fa/contact/"
+        weight = 7
+      [[languages.fa.menu.main]]
+        identifier = "about"
+        name = "درباره ما"
+        url = "/fa/about/"
+        weight = 8
+
+[params]
+  description = "A simple showcase site for English learning resources."
+  copyright = "© 2025 English By Moslemy"
+  linkedin = "https://linkedin.com/in/morteza-moslemy-44b50a210"
+  x = "https://x.com/Englishmoslemy"
+  instagram = "https://www.instagram.com/english_with_mr_moslemy"
+  customCSS = ["/css/about.css"]
+
+# Footer menu (language-aware in templates)
+[[menu.footer]]
+  identifier = "home"
+  url = "/"  # Will be resolved in templates with relLangURL
+  weight = 1
+
+[[menu.footer]]
+  identifier = "about"
+  url = "/about/"
+  weight = 2
+
+[[menu.footer]]
+  identifier = "contact"
+  url = "/contact/"
+  weight = 3
+  
+
+[outputs]
+  home = ["HTML", "RSS"]
+  section = ["HTML", "RSS"]
+  taxonomy = ["HTML", "RSS"]

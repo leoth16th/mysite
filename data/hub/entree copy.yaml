@@ -1,0 +1,12 @@
+name: "Resources"
+type: "folder"
+children:
+  - name: "General English"
+    type: "folder"
+    children:
+      - name: "AI"
+        type: "folder"
+        children:
+          - name: "Speak & Improve"
+            type: "url"
+            url: "https://speakandimprove.com"

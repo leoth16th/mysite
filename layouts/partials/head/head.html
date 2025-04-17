@@ -1,0 +1,21 @@
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="{{ .Description | default .Site.Params.Description }}">
+    <title>{{ .Title }} | {{ .Site.Title }}</title>
+
+    <!-- Load custom CSS -->
+    {{ $style := resources.Get "css/custom.scss" | toCSS | minify | fingerprint }}
+    <link rel="stylesheet" href="{{ $style.Permalink }}" integrity="{{ $style.Data.Integrity }}">
+
+    <!-- External Resources -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Poppins&family=Lora&family=Inter&family=Pacifico&family=Dancing+Script&display=swap" rel="stylesheet">
+
+    <!-- Conditional Home CSS -->
+    {{ if .IsHome }}
+        {{ $home := resources.Get "css/home.scss" | toCSS | minify | fingerprint }}
+        <link rel="stylesheet" href="{{ $home.Permalink }}" integrity="{{ $home.Data.Integrity }}">
+    {{ end }}
+</head>

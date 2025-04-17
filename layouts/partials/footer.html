@@ -1,0 +1,51 @@
+<footer class="site-footer py-4 mt-auto futuristic-shape" role="contentinfo">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3 text-center text-md-start d-flex align-items-center fade-in-up">
+        <a href="{{ "/" | relLangURL }}" class="neon-glow me-3" rel="home">
+          <img src="/images/logo.webp" alt="{{ .Site.Title }} Logo" height="50" class="breathing" loading="lazy">
+        </a>
+        <p class="mb-0">© 2025 {{ .Site.Title }}. All rights reserved.</p>
+      </div>
+      <div class="col-md-3 text-center fade-in-up">
+        <h5 class="neon-glow hover-lift">Language</h5>
+        <div class="language-toggle">
+          <a href="#" class="text-light dropdown-toggle neon-glow" id="footerLanguageDropdown" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Toggle Language">
+            {{ if eq .Language.Lang "en" }}EN{{ else }}FA{{ end }}
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="footerLanguageDropdown">
+            <li>
+              <a class="dropdown-item pulse-glow {{ if eq .Language.Lang "en" }}active{{ end }}" href="#" data-lang="en" hreflang="en" lang="en">English</a>
+            </li>
+            <li>
+              <a class="dropdown-item pulse-glow {{ if eq .Language.Lang "fa" }}active{{ end }}" href="#" data-lang="fa" hreflang="fa" lang="fa">فارسی</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-md-3 text-center text-md-end fade-in-up">
+        <h5 class="neon-glow hover-lift">Follow Us</h5>
+        <ul class="list-unstyled d-flex justify-content-center justify-content-md-end social-icons">
+          <li class="ms-3">
+            <a href="https://www.instagram.com/english_with_mr_moslemy" target="_blank" rel="noopener noreferrer" class="text-light neon-glow" aria-label="Instagram">
+              <img src="/images/icons/instagram.svg" alt="Instagram" width="24" height="24" loading="lazy">
+            </a>
+          </li>
+          <li class="ms-3">
+            <a href="https://x.com/Englishmoslemy" target="_blank" rel="noopener noreferrer" class="text-light neon-glow" aria-label="Twitter">
+              <img src="/images/icons/twitter.svg" alt="Twitter" width="24" height="24" loading="lazy">
+            </a>
+          </li>
+          <li class="ms-3">
+            <a href="https://linkedin.com/in/morteza-moslemy-44b50a210" target="_blank" rel="noopener noreferrer" class="text-light neon-glow" aria-label="LinkedIn">
+              <img src="/images/icons/linkedin.svg" alt="LinkedIn" width="24" height="24" loading="lazy">
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <a href="#" class="go-to-top btn btn-primary neon-glow pulse-glow" id="goToTop" aria-label="Go to Top">
+    <img src="/images/icons/arrow-up.svg" alt="Back to Top" width="24" height="24" loading="lazy">
+  </a>
+</footer>

@@ -1,0 +1,209 @@
+// assets/css/hub.scss
+@import "_variables";
+
+body {
+  background: var(--body-bg);
+  color: var(--text-color);
+  font-family: var(--font-body);
+  margin: 0;
+  overflow-x: hidden;
+}
+
+// Visualization Container
+#visualization-container {
+  margin: 2rem auto;
+  max-width: 1400px;
+  padding: 2rem;
+  @include glassmorphism;
+  border-radius: 15px;
+  box-shadow: var(--box-shadow);
+  position: relative;
+  overflow: hidden;
+  background: var(--card-bg);
+}
+
+// Nodes
+.node circle {
+  transition: var(--transition-base);
+}
+
+.node .open-node {
+  fill: var(--secondary-color);
+  stroke: var(--white);
+  stroke-width: 2px;
+}
+
+.node .collapsed-node {
+  fill: var(--primary-color);
+  stroke: var(--white);
+  stroke-width: 2px;
+}
+
+.node .url-node {
+  fill: var(--accent-color);
+  stroke: var(--white);
+  stroke-width: 2px;
+}
+
+.node.active circle {
+  animation: breathe 3s ease-in-out infinite;
+}
+
+.node.active text {
+  fill: var(--accent-color);
+  font-weight: 700; // Bolder
+  animation: breathe 3s ease-in-out infinite; // Add breathing effect
+}
+
+.node text {
+  fill: var(--text-color);
+  font-family: var(--font-body);
+  font-size: 20px; // Larger for readability
+  font-weight: 600; // Bolder
+  cursor: pointer;
+  transition: var(--transition-base);
+  &:hover {
+    fill: var(--primary-color);
+  }
+}
+
+path.link {
+  stroke: var(--secondary-color);
+  stroke-opacity: 0.6;
+  stroke-width: 3px;
+  transition: stroke-opacity 0.3s ease;
+  filter: none; // Remove the black shadow
+  &:hover {
+    stroke-opacity: 1;
+  }
+}
+
+.firework-particle {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  opacity: 1;
+  pointer-events: none;
+  z-index: 1000;
+  background: var(--accent-color);
+}
+
+// Hero Section
+.hero-message {
+  text-align: center;
+  padding: 2rem 1rem;
+  p {
+    font-size: 1.5rem;
+    color: var(--text-color);
+    margin: 0.5rem 0;
+    font-family: var(--font-body);
+    line-height: 1.6;
+    &:first-child {
+      font-size: 2rem;
+      font-weight: 600;
+      color: var(--heading-color);
+    }
+  }
+}
+
+// About Section
+.about-section {
+  padding: 2rem 1rem;
+  text-align: center;
+  h2 {
+    font-family: var(--font-primary);
+    font-size: 2.5rem;
+    color: var(--heading-color);
+    margin-bottom: 1rem;
+  }
+  p {
+    font-family: var(--font-body);
+    font-size: 1.2rem;
+    color: var(--text-color);
+    line-height: 1.6;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+}
+
+// Contact Section
+.contact-us {
+  padding: 2rem 1rem;
+  text-align: center;
+  h2 {
+    font-family: var(--font-primary);
+    font-size: 2.5rem;
+    color: var(--heading-color);
+    margin-bottom: 1rem;
+  }
+  p {
+    font-family: var(--font-body);
+    font-size: 1.2rem;
+    color: var(--text-color);
+    line-height: 1.6;
+    max-width: 800px;
+    margin: 0 auto 1.5rem;
+  }
+  .btn-primary {
+    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+    color: var(--white);
+    padding: 0.75rem 1.5rem;
+    border-radius: var(--border-radius);
+    text-decoration: none;
+    font-family: var(--font-ui);
+    font-weight: 500;
+    transition: var(--transition-base);
+    &:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--subtle-shadow);
+    }
+  }
+}
+
+// Responsive Adjustments
+@media (max-width: 768px) {
+  #visualization-container {
+    padding: 1rem;
+    margin: 1rem;
+  }
+
+  .hero-message p {
+    font-size: 1.2rem;
+    &:first-child {
+      font-size: 1.5rem;
+    }
+  }
+
+  .about-section h2,
+  .contact-us h2 {
+    font-size: 2rem;
+  }
+
+  .about-section p,
+  .contact-us p {
+    font-size: 1rem;
+  }
+
+  .node text {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-message p {
+    font-size: 1rem;
+    &:first-child {
+      font-size: 1.2rem;
+    }
+  }
+
+  .about-section h2,
+  .contact-us h2 {
+    font-size: 1.5rem;
+  }
+
+  .node text {
+    font-size: 14px;
+  }
+}

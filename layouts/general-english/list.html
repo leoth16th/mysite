@@ -1,0 +1,30 @@
+{{ define "styles" }}
+    {{ $global := resources.Get "css/global.scss" | toCSS | minify | fingerprint }}
+    <link rel="stylesheet" href="{{ $global.Permalink }}" integrity="{{ $global.Data.Integrity }}">
+{{ end }}
+
+{{ define "main" }}
+<div class="container">
+    <h1>{{ .Title }}</h1>
+    {{ partial "roadmap.html" . }}
+    <!-- Use B2RESOURCES instead of B1ROAD -->
+    {{ $data := index .Site.Data.B2RESOURCES .Lang "general-english" }}
+    {{ if $data }}
+      {{ partial "blocktwo.html" $data }}
+    {{ else }}
+      <p>Error: No data loaded from B2RESOURCES/{{ .Lang }}/general-english</p>
+    {{ end }}
+    {{ partial "why.html" . }}
+</div>
+{{ end }}
+
+{{ define "scripts" }}
+    {{ $feather := resources.Get "js/feather.min.js" | minify | fingerprint }}
+    <script src="{{ $feather.Permalink }}" integrity="{{ $feather.Data.Integrity }}"></script>
+    {{ $roadmap := resources.Get "js/roadmap.js" | minify | fingerprint }}
+    <script src="{{ $roadmap.Permalink }}" integrity="{{ $roadmap.Data.Integrity }}"></script>
+    {{ $why := resources.Get "js/why.js" | minify | fingerprint }}
+    <script src="{{ $why.Permalink }}" integrity="{{ $why.Data.Integrity }}"></script>
+    {{ $blocktwo := resources.Get "js/blocktwo.js" | minify | fingerprint }}
+    <script src="{{ $blocktwo.Permalink }}" integrity="{{ $blocktwo.Data.Integrity }}"></script>
+{{ end }}

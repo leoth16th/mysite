@@ -1,0 +1,64 @@
+<section class="resources-section py-5 fade-in-up" role="region" aria-label="Resources">
+  <div class="resources-container container">
+    <!-- Block Title & Intro -->
+    <div class="resources-header text-center mb-5">
+      <h2 class="resources-title display-4 text-primary mb-3 neon-glow">{{ .title }}</h2>
+      <p class="resources-intro lead">{{ .intro }}</p>
+    </div>
+
+    <!-- Resource Highlights Carousel -->
+    <div class="resources-carousel-wrapper row justify-content-center">
+      <div class="col-lg-8">
+        <div id="resourcesCarousel" class="carousel slide slider" data-bs-ride="carousel">
+          <div class="carousel-inner slider-track">
+            {{ range $index, $resource := .resources }}
+              <div class="carousel-item slide {{ if eq $index 0 }}active{{ end }}">
+                <div class="resource-card bg-dark text-center p-4 h-100 glassmorphism">
+                  <div class="resource-card__body">
+                    <i data-feather="{{ .icon }}" class="resource-card__icon text-primary mb-3 neon-glow"></i>
+                    <h3 class="resource-card__title h5 text-white neon-glow">{{ .title }}</h3>
+                    <p class="resource-card__text text-light">{{ .description }}</p>
+                  </div>
+                </div>
+              </div>
+            {{ end }}
+          </div>
+          
+          <!-- Carousel Navigation -->
+          <div class="carousel-controls">
+            <button class="carousel-control-prev slider-prev" type="button" data-bs-target="#resourcesCarousel" data-bs-slide="prev" aria-label="Previous Slide">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next slider-next" type="button" data-bs-target="#resourcesCarousel" data-bs-slide="next" aria-label="Next Slide">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+          </div>
+          <!-- Carousel Indicators -->
+          <div class="carousel-indicators slider-dots">
+            {{ range $index, $resource := .resources }}
+              <button type="button" class="slide-dot {{ if eq $index 0 }}active{{ end }}" data-bs-target="#resourcesCarousel" data-bs-slide-to="{{ $index }}" aria-label="Slide {{ add $index 1 }}"></button>
+            {{ end }}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Hub Teaser -->
+    <div class="text-center my-5 fade-in-up">
+      <h3 class="h4 fw-bold text-primary neon-glow">{{ .teaser_title }}</h3>
+      <p class="text-light">{{ .teaser_text }}</p>
+    </div>
+
+    <!-- Call-to-Action -->
+    <div class="text-center fade-in-up">
+      <a href="{{ .cta_link | relLangURL }}" class="btn btn-primary btn-lg mb-3 neon-glow pulse-glow" aria-label="{{ .cta_text }}">{{ .cta_text }}</a>
+      <p class="text-light">{{ .cta_subtext }} <a href="{{ .cta_subtext_link | relLangURL }}" class="text-primary text-decoration-underline neon-glow" rel="noopener">{{ .cta_subtext_link_text }}</a></p>
+    </div>
+  </div>
+</section>
+
+<!-- Load blocktwo.js -->
+{{ $blocktwoJS := resources.Get "js/blocktwo.js" | minify | fingerprint }}
+<script src="{{ $blocktwoJS.Permalink }}" integrity="{{ $blocktwoJS.Data.Integrity }}"></script>

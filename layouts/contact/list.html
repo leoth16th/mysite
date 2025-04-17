@@ -1,0 +1,30 @@
+{{ define "styles" }}
+    {{ $contact := resources.Get "css/contact.scss" | toCSS | minify | fingerprint }}
+    <link rel="stylesheet" href="{{ $contact.Permalink }}" integrity="{{ $contact.Data.Integrity }}">
+{{ end }}
+
+{{ define "main" }}
+  <main class="main-content fade-in-up" role="main" aria-label="Contact Form">
+    <section class="page-section">
+      <div class="page-box container glassmorphism">
+        <h1 class="page-title neon-glow">{{ .Title }}</h1>
+        <div class="page-content">
+          {{ .Content }}
+        </div>
+        {{ if eq .Section "contact" }}
+          <form action="https://formspree.io/f/xjkygnnr" method="POST" class="contact-form" id="contactForm">
+            <div class="form-group fade-in-up">
+              <label for="email">Your Email:</label>
+              <input type="email" id="email" name="email" required aria-label="Your Email" placeholder="Enter your email">
+            </div>
+            <div class="form-group fade-in-up">
+              <label for="message">Your Message:</label>
+              <textarea id="message" name="message" rows="5" required aria-label="Your Message" placeholder="Type your message"></textarea>
+            </div>
+            <button type="submit" class="submit-button neon-glow pulse-glow" aria-label="Send Message">Send</button>
+          </form>
+        {{ end }}
+      </div>
+    </section>
+  </main>
+{{ end }}

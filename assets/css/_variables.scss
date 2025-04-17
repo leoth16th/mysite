@@ -1,0 +1,193 @@
+// assets/css/_variables.scss
+
+// Base variables for colors, fonts, and effects
+:root {
+  // Core Colors
+  --primary-color: #6A1B9A;        // Cambridge purple
+  --secondary-color: #4A6E4A;      // Deep green for success/completion
+  --accent-color: #6A1B9A;         // Neon yellow for highlights
+  --neon-cyan: #8E66A3;            // Neon cyan for hover/active
+  --neon-pink: #8E66A3;            // Neon pink for subtle CTAs
+
+  // Backgrounds
+  --background-color: #F5F5FA;     // Light mode base (faint purple tint)
+  --card-bg: rgba(255, 255, 255, 0.8);  // Light mode card background
+  --body-bg: var(--background-color); // Default body background
+
+  // Text Colors
+  --text-color: #333333;           // Light mode primary text
+  --heading-color: #5A1A85;        // Light mode headings (purple)
+  --muted-text: #555555;           // Light mode muted text
+  --white: #FFFFFF;                // Pure white
+  --gray-light: #EEEEEE;           // Light gray
+  --gray-medium: #B0BEC5;          // Medium gray
+
+  // Fonts
+  --font-primary: 'Montserrat', sans-serif;   // Headings
+  --font-body: 'Lora', serif;                 // Body text
+  --font-ui: 'Inter', sans-serif;             // UI elements (buttons, menus)
+  --font-accent: 'Pacifico', cursive;         // Quotes, testimonials
+
+  // Effects
+  --neon-glow: none;
+  --box-shadow: 0 4px 12px rgba(106, 27, 154, 0.1); // Light mode shadow
+  --transition-base: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);            // Base transition
+  --border-radius: 12px;                        // Rounded corners
+}
+
+// Dark mode overrides
+[data-theme="dark"] {
+  // Core Colors (unchanged where bold enough)
+  --primary-color: #6A1B9A;
+  --secondary-color: #4A6E4A;
+  --accent-color: #6A1B9A;
+  --neon-cyan: #8E66A3;
+  --neon-pink: #8E66A3;
+
+  // Backgrounds
+  --background-color: #1A1E24;              // Dark mode base
+  --card-bg: rgba(30, 40, 50, 0.9);
+  --body-bg: linear-gradient(to bottom, #1A1E24, #23272E); // Subtle gradient
+
+  // Text Colors
+  --text-color: #D0D0D0;                    // Dark mode primary text
+  --heading-color: #F5F5F5;                 // Dark mode headings
+  --muted-text: #A0A0A0;                    // Dark mode muted text
+
+  // Effects
+}
+
+@mixin glassmorphism {
+  background: var(--card-bg);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: var(--box-shadow);
+}
+
+// Mixins for reusable effects
+@mixin neon-glow($color: var(--accent-color)) {
+  text-shadow: 0 0 5px $color, 0 0 15px $color, 0 0 25px $color;
+  transition: var(--transition-base);
+}
+
+@mixin glassmorphism {
+  background: var(--card-bg);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px); // Safari support
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--border-radius);
+}
+
+@mixin gradient-accent {
+  background: linear-gradient(to right, var(--accent-color), #FFB300);
+}
+
+// Keyframe Animations
+@keyframes fadeInUp {
+  from {
+      opacity: 0;
+      transform: translateY(20px);
+  }
+  to {
+      opacity: 1;
+      transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+      transform: scale(1);
+  }
+  50% {
+      transform: scale(1.05);
+      @include neon-glow;
+  }
+}
+
+@keyframes breathe {
+  0%, 100% {
+      transform: scale(1);
+  }
+  50% {
+      transform: scale(1.05);
+  }
+}
+
+// Classes for JS-driven effects
+.pulse-glow {
+  animation: pulse 0.5s ease-in-out;
+}
+
+.neon-glow {
+  box-shadow: none;
+  text-shadow: none;
+  transition: none;
+}
+
+.glow-progress {
+  box-shadow: none;
+  transition: none;
+}
+
+.scale-up {
+  transform: scale(1.1);
+  transition: transform 0.3s ease;
+}
+
+// Slider-specific styles
+.slider-track {
+  transition: transform 0.5s ease-out;
+}
+
+.slide {
+  &.fade-in-up {
+      animation: fadeInUp 0.5s ease-out;
+  }
+}
+
+.slide-dot {
+  transition: all 0.3s ease;
+  &.active {
+      background-color: var(--accent-color);
+  }
+  &.pulse-glow {
+      animation: pulse 0.5s ease-in-out;
+  }
+  &.scale-up {
+      transform: scale(1.2);
+  }
+}
+
+.slider-prev, .slider-next {
+  transition: all 0.3s ease;
+  &.neon-glow {
+      box-shadow: 0 0 10px var(--neon-cyan);
+  }
+}
+
+// Reading progress bar
+#reading-progress {
+  height: 3px;
+  background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+  transition: width 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  &.glow-progress {
+      box-shadow: none;
+  }
+}
+
+// Feather icon support
+[data-feather] {
+  transition: transform 0.3s ease;
+  &.scale-up {
+      transform: scale(1.1);
+  }
+  &.neon-glow {
+      filter: drop-shadow(0 0 5px var(--neon-cyan));
+  }
+}
+
+@keyframes breathe {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.02); }
+  100% { transform: scale(1); }
+}

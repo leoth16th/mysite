@@ -1,0 +1,128 @@
+:root {
+    --primary-color: #6A1B9A; /* Site's primary purple */
+    --secondary-color: #4A6E4A; /* Site's secondary green */
+    --accent-color: #6A1B9A; /* Site's accent yellow */
+    --background-dark: #0F1020; /* Deep space blue for modern look */
+    --text-primary: #FFFFFF;
+    --glow-primary: rgba(106, 27, 154, 0.5); /* Glow based on primary */
+    --glow-secondary: rgba(46, 125, 50, 0.5); /* Glow based on secondary */
+}
+
+body {
+    background: var(--background-dark);
+    color: var(--text-primary);
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    overflow-x: hidden;
+}
+
+#visualization-container {
+    margin: 2rem auto;
+    max-width: 1400px;
+    padding: 2rem;
+    background: rgba(15, 16, 32, 0.95);
+    border-radius: 15px;
+    box-shadow: 0 0 30px var(--glow-primary);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Node Styles */
+.node circle {
+    transition: all 0.5s ease;
+}
+
+.node .open-node {
+    fill: var(--secondary-color);
+    stroke: var(--text-primary);
+    stroke-width: 2px;
+    filter: drop-shadow(0 0 10px var(--glow-secondary));
+}
+
+.node .collapsed-node {
+    fill: var(--primary-color);
+    stroke: var(--text-primary);
+    stroke-width: 2px;
+    filter: drop-shadow(0 0 15px var(--glow-primary));
+}
+
+.node .url-node {
+    fill: var(--accent-color);
+    stroke: var(--text-primary);
+    stroke-width: 2px;
+    filter: drop-shadow(0 0 20px rgba(255, 202, 40, 0.7));
+    animation: pulse 1.5s infinite;
+}
+
+/* Breathing Effect for Active Nodes */
+.node.active circle {
+    animation: breathe 3s ease-in-out infinite;
+}
+
+.node.active text {
+    fill: var(--accent-color);
+    text-shadow: 
+        0 0 15px var(--accent-color),
+        0 0 30px var(--glow-primary);
+    font-weight: 600;
+}
+
+.node text {
+    fill: var(--text-primary);
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    text-shadow: 0 0 5px var(--glow-primary);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.node text:hover {
+    fill: var(--accent-color);
+    text-shadow: 0 0 15px var(--accent-color);
+}
+
+/* Link Styles */
+path.link {
+    stroke: var(--secondary-color);
+    stroke-opacity: 0.6;
+    stroke-width: 3px;
+    filter: drop-shadow(0 0 5px var(--glow-secondary));
+    transition: stroke-opacity 0.3s ease;
+}
+
+path.link:hover {
+    stroke-opacity: 1;
+}
+
+/* Firework Particles (if applicable) */
+.firework-particle {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    opacity: 1;
+    pointer-events: none;
+    z-index: 1000;
+}
+
+/* Animations */
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.15); }
+    100% { transform: scale(1); }
+}
+
+@keyframes breathe {
+    0% {
+        filter: drop-shadow(0 0 10px var(--glow-primary)) brightness(1);
+        transform: scale(1);
+    }
+    50% {
+        filter: drop-shadow(0 0 25px var(--glow-primary)) brightness(1.2);
+        transform: scale(1.1);
+    }
+    100% {
+        filter: drop-shadow(0 0 10px var(--glow-primary)) brightness(1);
+        transform: scale(1);
+    }
+}

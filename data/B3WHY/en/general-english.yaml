@@ -1,0 +1,45 @@
+title: "Unlock Your English Potential: Why Our General English Course Delivers Results"
+intro_text: "Achieve confident, everyday English communication. Our personalized General English course is designed to rapidly improve your fluency and speaking skills, whether you're starting out or aiming to enhance your English for work or travel. I'm committed to guiding you with expertise and genuine support throughout your language journey."
+journey_steps:
+  - icon: "📋"
+    text: "Assessment"
+  - icon: "🎯"
+    text: "Strategy"
+  - icon: "🔄"
+    text: "Practice"
+  - icon: "📈"
+    text: "Progress"
+  - icon: "🏆"
+    text: "Success"
+stats:
+  - value: 90
+    suffix: "%"
+    text: "Over 90% Fluency Improvement Rate"
+  - value: 6
+    suffix: "months"
+    text: "Average 6 Months to Conversational Fluency"
+  - value: 200
+    suffix: "+"
+    text: "200+ Successful English Learners Guided"
+benefits:
+  - icon: "🎯"
+    title: "Personalized English Plan"
+    text: "Lessons tailored to your specific needs—daily life, travel, or work—for rapid fluency and confidence."
+  - icon: "🧠"
+    title: "Real-World Speaking Skills"
+    text: "Interactive practice for natural communication in everyday situations like shopping, socializing, and travel."
+  - icon: "⚡"
+    title: "Unshakable Communication Confidence"
+    text: "Techniques to reduce hesitation and improve clear, effective expression in English."
+testimonial:
+  text: "I struggled with speaking English confidently in daily life. This General English course changed everything—I went from shy to fluent in just 6 months! The practical lessons and supportive guidance made all the difference."
+  author:
+    name: "Liam M."
+    title: "Traveler & Blogger"
+    avatar: "L"
+    result: "Fluent in 6 Months"
+cta:
+  title: "Ready to Transform Your English?"
+  text: "Begin Your Confident English Journey Today."
+  button_text: "Claim Your Spot: Start Improving English Now!"
+  availability: "Limited Spots Available: 4 Coaching Spots Left!"

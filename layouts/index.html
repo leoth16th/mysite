@@ -1,0 +1,37 @@
+{{ define "styles" }}
+    {{ $home := resources.Get "css/home.scss" | toCSS | minify | fingerprint }}
+    <link rel="stylesheet" href="{{ $home.Permalink }}" integrity="{{ $home.Data.Integrity }}">
+{{ end }}
+
+{{ define "main" }}
+  <main class="main-content">
+    <section class="welcome-section">
+      <div class="header-box">
+        <h1 class="main-title neon-glow">
+          <span class="welcome-text">Welcome to</span>
+          <span class="brand-name">{{ .Params.brand }}</span>
+        </h1>
+        <p class="slogan">
+          <span class="slogan-text">{{ .Params.slogan }}</span>
+        </p>
+      </div>
+      <div class="services-grid">
+        {{ range .Params.services }}
+          <article class="service-box neon-glow" data-service="{{ .name | urlize }}">
+            <a href="{{ .url }}" class="clickable-box" aria-label="{{ .name }}">
+              {{ if .image }}
+                <img src="{{ .image }}" alt="{{ .name }} Icon" class="icon">
+              {{ else }}
+                <span class="material-icons icon" aria-hidden="true">{{ .icon }}</span>
+              {{ end }}
+              <div class="text-content">
+                <span class="default-text">{{ .name }}</span>
+                <span class="hover-text">{{ .description }}</span>
+              </div>
+            </a>
+          </article>
+        {{ end }}
+      </div>
+    </section>
+  </main>
+{{ end }}

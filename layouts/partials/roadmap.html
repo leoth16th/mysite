@@ -1,0 +1,81 @@
+{{/* Get the roadmap type from the section */}}
+{{ $roadmap_type := .Section }}
+
+{{/* Get the roadmap data based on current language */}}
+{{ with index .Site.Data.B1ROAD .Lang (printf "%s_roadmap" $roadmap_type) }}
+  {{/* Store important variables outside the with scope */}}
+  {{ $roadmap_id := .roadmap_id | default "roadmap" }}
+  {{ $steps := .steps }}
+  
+  <div class="roadmap fade-in-up" id="{{ $roadmap_id }}" role="region" aria-label="{{ .roadmap_title | default "Success Roadmap" }}">
+    <div class="roadmap-header">
+      <h1 class="neon-glow hover-lift">{{ .roadmap_title | default "Your Success Roadmap" }}</h1>
+      <p>{{ .roadmap_subtitle | default "Click through each milestone on your journey to success" }}</p>
+    </div>
+
+    <!-- Timeline track -->
+    <div class="roadmap-timeline">
+      <div class="timeline-track"></div>
+      <div class="timeline-progress glow-progress" id="timelineProgress"></div>
+      
+      <!-- Timeline points -->
+      <div class="timeline-points">
+        {{ range $index, $step := $steps }}
+        <div class="timeline-point pulse-glow" data-index="{{ $index }}" role="tab" aria-controls="step-{{ $index }}">
+          <button class="point-button neon-glow" data-index="{{ $index }}" aria-label="Step {{ add $index 1 }}: {{ $step.title }}">
+            <span class="point-number">{{ add $index 1 }}</span>
+            <span class="point-check"><i class="lucide-check"></i></span>
+          </button>
+          <span class="point-title">{{ $step.title }}</span>
+        </div>
+        {{ end }}
+      </div>
+    </div>
+    
+    <!-- Content section -->
+    <div class="roadmap-content" id="roadmapContent">
+      {{ range $index, $step := $steps }}
+      <div class="step-content fade-in-up" data-index="{{ $index }}" id="step-{{ $index }}" role="tabpanel" aria-labelledby="point-{{ $index }}">
+        <div class="step-header">
+          <div class="step-icon {{ $step.icon }} neon-glow">
+            <i class="lucide-{{ $step.icon }}"></i>
+          </div>
+          <h2 class="neon-glow hover-lift">{{ $step.title }}</h2>
+        </div>
+        
+        <p class="step-description">{{ $step.description }}</p>
+        
+        <div class="step-tasks">
+          <h3 class="neon-glow hover-lift">Key Tasks:</h3>
+          <ul>
+            {{ range $taskIndex, $task := $step.tasks }}
+            <li>
+              <div class="task-number">{{ add $taskIndex 1 }}</div>
+              <span>{{ $task }}</span>
+            </li>
+            {{ end }}
+          </ul>
+        </div>
+        
+        <div class="step-navigation">
+          <button class="prev-button neon-glow" {{ if eq $index 0 }}disabled{{ end }} aria-label="Previous Step">
+            <i class="lucide-chevron-left"></i> Previous
+          </button>
+          
+          <button class="next-button neon-glow" {{ if eq $index (sub (len $steps) 1) }}disabled{{ end }} aria-label="Next Step">
+            Next <i class="lucide-chevron-right"></i>
+          </button>
+        </div>
+      </div>
+      {{ end }}
+    </div>
+  </div>
+
+  <!-- Include the JS file -->
+  {{ $roadmapJS := resources.Get "js/roadmap.js" | minify | fingerprint }}
+  <script src="{{ $roadmapJS.Permalink }}" integrity="{{ $roadmapJS.Data.Integrity }}"></script>
+{{ else }}
+  <div class="error alert alert-danger fade-in-up">
+    <p>Roadmap data not found for type: {{ $roadmap_type }} in language: {{ .Lang }}. Please ensure data/B1ROAD/{{ .Lang }}/{{ $roadmap_type }}_roadmap.yaml exists.</p>
+  </div>
+{{ end }}

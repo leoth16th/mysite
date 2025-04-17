@@ -1,0 +1,36 @@
+// assets/css/custom.scss
+
+// Import variables
+@import "_variables";
+
+// Base Styles
+body {
+  background-color: var(--body-bg);
+  background-image: var(--body-background-image);
+  background-size: var(--body-background-size);
+  background-position: var(--body-background-position);
+  background-repeat: var(--body-background-repeat);
+  box-shadow: var(--body-shadow);
+  color: var(--text-color);
+  font-family: var(--font-body);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  transition: var(--transition-base);
+  overflow-x: hidden;
+}
+
+// Neon Glow Effect
+.neon-glow {
+  @include neon-glow;
+  &:hover {
+    @include neon-glow(var(--neon-cyan));
+  }
+}
+
+img.neon-glow {
+  filter: drop-shadow(var(--neon-glow));
+  &:hover {
+    filter: drop-shadow(0 0 15px var(--neon-cyan));
+  }
+}

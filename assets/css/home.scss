@@ -1,0 +1,239 @@
+@import "_variables";
+
+.main-content {
+  min-height: 100vh;
+  padding: 2rem 0;
+  background: var(--body-bg);
+}
+
+.welcome-section {
+  padding: 3rem 1rem;
+  position: relative;
+  text-align: center;
+  color: var(--text-color);
+  overflow: hidden;
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: none;
+    z-index: 1;
+  }
+}
+
+.header-box {
+  position: relative;
+  z-index: 2;
+  margin-bottom: 2rem;
+}
+
+.main-title {
+  font-family: var(--font-primary);
+  font-size: 2.5rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+  &.neon-glow {
+    animation: breathe 3s ease-in-out infinite;
+    &:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--subtle-shadow);
+    }
+  }
+}
+
+.welcome-text,
+.brand-name {
+  display: block;
+}
+
+.welcome-text {
+  font-size: 1.5rem;
+  font-weight: 400;
+}
+
+.brand-name {
+  font-size: 2.5rem;
+  font-weight: 600;
+}
+
+.slogan {
+  font-family: var(--font-body);
+  font-size: 1.2rem;
+  margin-bottom: 1.5rem;
+}
+
+.slogan-text {
+  display: block;
+}
+
+.services-grid {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  padding: 0 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.service-box {
+  @include glassmorphism;
+  border-radius: var(--border-radius);
+  padding: 2rem;
+  text-align: center;
+  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.25s ease;
+  position: relative;
+  min-height: 250px;
+  width: 100%;
+  max-width: 300px;
+  margin: 0 auto;
+  overflow: hidden;
+  &:hover {
+    transform: scale(1.05);
+    box-shadow: var(--subtle-shadow);
+  }
+}
+
+.clickable-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  color: var(--text-color);
+  height: 100%;
+}
+
+.icon {
+  font-size: 3rem;
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+  transition: opacity 0.25s ease;
+  &.material-icons {
+    font-size: 3rem;
+  }
+}
+
+.text-content {
+  position: relative;
+  min-height: 6rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.default-text {
+  font-family: var(--font-ui);
+  font-size: 1.5rem;
+  font-weight: 500;
+  transition: opacity 0.25s ease;
+  position: relative;
+  z-index: 1;
+}
+
+.hover-text {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  color: var(--muted-text);
+  opacity: 0;
+  transition: opacity 0.25s ease;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 0 1rem;
+  z-index: 0;
+  line-height: 1.5;
+  max-height: 6rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.service-box:hover .hover-text {
+  opacity: 1;
+  z-index: 1;
+}
+
+.service-box:hover .default-text {
+  opacity: 0;
+}
+
+.service-box:hover .icon {
+  opacity: 1;
+}
+
+.footer-social-icons a {
+  color: var(--primary-color);
+  transition: color 0.25s ease;
+  &:hover {
+    color: var(--secondary-color);
+  }
+}
+
+[data-theme="light"] .footer-social-icons a {
+  color: #5A1A85;
+}
+
+@media (min-width: 768px) {
+  .welcome-section {
+    padding: 5rem 2rem;
+  }
+
+  .main-title {
+    font-size: 3.5rem;
+  }
+
+  .welcome-text {
+    font-size: 2rem;
+  }
+
+  .brand-name {
+    font-size: 3.5rem;
+  }
+
+  .slogan {
+    font-size: 1.5rem;
+  }
+
+  .services-grid {
+    gap: 2rem;
+  }
+
+  .service-box {
+    padding: 2.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .main-title {
+    font-size: 2rem;
+  }
+
+  .welcome-text {
+    font-size: 1.2rem;
+  }
+
+  .brand-name {
+    font-size: 2rem;
+  }
+
+  .slogan {
+    font-size: 1rem;
+  }
+
+  .services-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .service-box {
+    max-width: 100%;
+    min-height: 200px;
+  }
+}
