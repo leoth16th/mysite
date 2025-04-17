@@ -1,20 +1,39 @@
 // assets/css/hub.scss
 @import "_variables";
 
-
 // Visualization Container
 #visualization-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-  justify-content: center;
-  padding: 20px;
-  border-radius: 10px;
-  margin-top: 20px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  max-width: 1200px;
-  background: var(--card-bg);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--card-bg);
+  z-index: 1000; // Ensure it's on top
 }
+
+// Message before the tree
+.visualization-message {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 1.5rem;
+  color: var(--text-color);
+  font-family: var(--font-body);
+  text-align: center;
+  z-index: 1001; // Above the SVG
+}
+
+svg {
+  width: 100%;
+  height: 100%;
+}
+
+.node {
+  cursor: pointer;
+}
+
 
 // Nodes
 .node circle {
@@ -23,50 +42,26 @@
 
 // Hub Section (Each Category)
 .hub-section {
-  background-color: var(--secondary-background);
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  padding: 20px;
-  width: calc(33.333% - 1rem); // Three items per row with gap
-  min-width: 300px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  &:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-  }
-
-  h2 {
-    color: var(--heading-color);
-    font-size: 1.8rem;
-    margin-bottom: 15px;
-    text-align: center;
-    font-family: var(--font-primary);
-    border-bottom: 2px solid var(--accent-color);
-    padding-bottom: 5px;
-  }
-}
-
-// Hub Links (List of URLs)
-.hub-links {
-  list-style: none;
-  padding: 0;
-
-  li {
-    margin-bottom: 10px;
-  }
-
-  a {
-    color: var(--text-color);
-    text-decoration: none;
-    transition: color 0.3s ease;
-    font-family: var(--font-body);
-    font-size: 1.1rem;
-    &:hover {
-      color: var(--primary-color);
-      text-decoration: underline;
+    .node--internal circle {
+        fill: var(--node-internal);
+        stroke: var(--node-stroke);
+        stroke-width: 2px;
     }
-  }
+    .node--internal text {
+        fill: var(--text-color);
+        font-family: var(--font-body);
+        font-size: 1rem;
+    }
+    .node--leaf circle {
+        fill: var(--node-leaf);
+    }
+    .node--leaf text {
+        fill: var(--link-color);
+        font-family: var(--font-body);
+        font-size: 0.9rem;
+    }
 }
+
 // Hero Section
 .hero-message {
   text-align: center;
@@ -132,7 +127,6 @@
     font-family: var(--font-ui);
     font-weight: 500;
     transition: var(--transition-base);
-    &:hover {
       transform: translateY(-4px);
       box-shadow: var(--subtle-shadow);
     }
@@ -140,48 +134,26 @@
 }
 
 
-@media (max-width: 768px) {
-  .hub-section {
-    width: calc(50% - 1rem); // Two items per row on medium screens
-  }
+// Links
+.link {\n  fill: none;\n  stroke: var(--link-color);\n  stroke-width: 2px;\n}
 
-  #visualization-container {
-    padding: 1rem;
-    margin: 1rem;
-  }
-  .hero-message p {
-    font-size: 1.2rem;
-    &:first-child {
-      font-size: 1.5rem;
+
+// Media Queries for Responsiveness
+@media (max-width: 1024px) {
+    .node text {
+        font-size: 0.8rem;
     }
-  }
-  .about-section h2,
-  .contact-us h2 {
-    font-size: 2rem;
-  }
-  .about-section p,
-  .contact-us p {
-    font-size: 1rem;
-  }
-  .node text {
-    font-size: 16px;
-  }
 }
-@media (max-width: 480px) {
-  .hub-section {
-    width: 100%; // One item per row on small screens
-  }
-  .hero-message p {
-    font-size: 1rem;
-    &:first-child {
-      font-size: 1.2rem;
+@media (max-width: 768px) {
+    .node text {
+        font-size: 0.7rem;
     }
-  }
-
-  .about-section h2,
-  .contact-us h2 {
-    font-size: 1.5rem;
-  }
+}
+@media (max-width: 576px) {
+    .node text {
+        font-size: 0.6rem;
+    }
+}
 }
 
 @media (max-width: 480px) {

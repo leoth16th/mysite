@@ -4,7 +4,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&family=Poppins:wght@400;500&family=Lora&family=Inter&family=Pacifico&display=swap" rel="stylesheet">
 {{ end }}
 
-{{ define "main" }}
+{{ define "main" }}    
     {{ $langData := index .Site.Data.hub .Language.Lang }}
     
     <!-- Hero Section -->
@@ -16,7 +16,10 @@
     </section>
 
     <!-- Visualization Section -->
-    <div id="visualization-container" class="visualization-container fade-in-up" role="region" aria-label="Learning Pathway Visualization"></div>
+    <section class="visualization fade-in-up" role="region" aria-label="Learning Pathway Visualization">
+        <p class="description">{{ with $langData.visualizationDescription }}{{ . }}{{ else }}Click on the nodes to explore resources.{{ end }}</p>
+        <div id="visualization-container" class="visualization-container"></div>
+    </section>
 
     <!-- About Section -->
     <section class="about-section fade-in-up" role="region" aria-label="About Your Pathway">
@@ -37,14 +40,23 @@
 {{ end }}
 
 {{ define "scripts" }}
+    {{ $d3 := resources.Get "js/d3.v7.min.js" | minify | fingerprint }}
+    <script src="{{ $d3.Permalink }}" integrity="{{ $d3.Data.Integrity }}"></script>
     <script>
         window.hubData = {
             lang: {{ .Language.Lang | jsonify | safeJS }},
-            {{ if eq .Language.Lang "en" }}
-                sections: {{ index .Site.Data.hub "en" | jsonify | safeJS }}
-            {{ else if eq .Language.Lang "fa" }}
-                sections: {{ index .Site.Data.hub "fa" | jsonify | safeJS }}
-            {{ end }}
+            sections: [
+                {{ range $section := (index .Site.Data.hub .Language.Lang).sections }}
+                {
+                    name: {{ $section.name | jsonify | safeJS }},
+                    links: [
+                        {{ range $link := $section.links }}
+                        { url: {{ $link.url | jsonify | safeJS }}, name: {{ $link.name | jsonify | safeJS }} },
+                        {{ end }}
+                    ]
+                },
+                {{ end }}
+            ]
         };
     </script>
     {{ $hub := resources.Get "js/hub.js" | minify | fingerprint }}
