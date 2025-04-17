@@ -57,13 +57,6 @@
   // Effects
 }
 
-@mixin glassmorphism {
-  background: var(--card-bg);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: var(--box-shadow);
-}
-
 // Mixins for reusable effects
 @mixin neon-glow($color: var(--accent-color)) {
   text-shadow: 0 0 5px $color, 0 0 15px $color, 0 0 25px $color;

@@ -1,13 +1,6 @@
 // assets/css/hub.scss
 @import "_variables";
 
-body {
-  background: var(--body-bg);
-  color: var(--text-color);
-  font-family: var(--font-body);
-  margin: 0;
-  overflow-x: hidden;
-}
 
 // Visualization Container
 #visualization-container {

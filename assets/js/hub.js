@@ -21,9 +21,6 @@ document.addEventListener('DOMContentLoaded', function() {
         .attr('viewBox', `0 0 ${width} ${height}`)
         .attr('preserveAspectRatio', 'xMidYMid meet');
 
-    // Remove any existing SVG filters
-    svg.selectAll('filter').remove();
-
     const g = svg.append('g')
         .attr('transform', 'translate(100, 0)');
 
@@ -77,10 +74,9 @@ document.addEventListener('DOMContentLoaded', function() {
             });
 
         nodeEnter.append('circle')
-            .attr('r', 0)
-            .attr('class', d => d._children ? 'collapsed-node' : 'open-node')
-            .style('filter', 'none')
-            .attr('filter', null); // Explicitly remove any filter attribute
+            .attr('r', 10)
+            .attr('class', d => d._children ? 'collapsed-node' : 'open-node');
+
 
         nodeEnter.append('text')
             .attr('dy', '.35em')
@@ -95,14 +91,41 @@ document.addEventListener('DOMContentLoaded', function() {
 
         nodeUpdate.select('circle')
             .attr('r', d => isOnActivePath(d) ? 15 : 10)
-            .attr('class', d => d._children ? 'collapsed-node' : 'open-node')
-            .style('filter', 'none')
-            .attr('filter', null); // Ensure no filter attribute during updates
+            .attr('class', d => d._children ? 'collapsed-node' : 'open-node');
 
         nodeUpdate.select('text')
             .style('font-size', d => isOnActivePath(d) ? '24px' : '20px')
             .style('font-weight', '600')
             .style('opacity', 1);
+
+        nodeEnter.each(function(d) {
+            const node = d3.select(this);
+            if (d.data.url) {
+                node.select('circle')
+                    .style('cursor', 'pointer') 
+                    .on('click', function(event) {
+                        event.stopPropagation();
+                        window.open(d.data.url, '_blank');
+                    });
+
+                node.select('text')
+                    .style('cursor', 'pointer')
+                    .on('click', function(event) {
+                        event.stopPropagation(); 
+                        window.open(d.data.url, '_blank');
+                    });
+            } else{
+                node.select('circle')
+                    .on('click', (event) => {
+                        click(event, d);
+                    });
+
+                node.select('text')
+                    .on('click', (event) => {
+                        click(event, d);
+                    });
+            }
+        });
 
         const nodeExit = node.exit().transition(t)
             .attr('transform', d => `translate(${source.y},${source.x})`)
@@ -119,30 +142,6 @@ document.addEventListener('DOMContentLoaded', function() {
             d.x0 = d.x;
             d.y0 = d.y;
         });
-
-        // Debug: Log the filter style and attribute of all circles after the update
-        setTimeout(() => {
-            d3.selectAll('circle').each(function() {
-                const filterStyle = d3.select(this).style('filter');
-                const filterAttr = d3.select(this).attr('filter');
-                console.log('Circle filter style:', filterStyle, 'filter attribute:', filterAttr);
-            });
-            // Check for any SVG filters in the DOM
-            const filters = svg.selectAll('filter');
-            if (!filters.empty()) {
-                console.log('SVG filters found:', filters.nodes());
-            } else {
-                console.log('No SVG filters found in the DOM.');
-            }
-        }, duration + 100);
-
-        // Fallback: Forcefully remove the shadow after a delay
-        setTimeout(() => {
-            d3.selectAll('circle')
-                .style('filter', 'none')
-                .attr('filter', null);
-            svg.selectAll('filter').remove();
-        }, duration + 500);
     }
 
     function click(event, d) {
@@ -186,12 +185,4 @@ document.addEventListener('DOMContentLoaded', function() {
     root.x0 = height / 2;
     root.y0 = 0;
     update(root);
-
-    // Additional safeguard: Periodically remove any shadows
-    setInterval(() => {
-        d3.selectAll('circle')
-            .style('filter', 'none')
-            .attr('filter', null);
-        svg.selectAll('filter').remove();
-    }, 1000);
 });

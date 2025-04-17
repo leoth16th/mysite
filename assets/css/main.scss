@@ -20,19 +20,6 @@ $body-color: #212121;
 // Import Bootstrap
 @import "../../node_modules/@filipecarneiro/hugo-bootstrap-theme/assets/sass/bootstrap/bootstrap.scss";
 
-// Body styles
-body {
-  background-color: var(--body-bg, $body-bg) !important;
-  background-image: var(--body-background-image) !important;
-  background-size: var(--body-background-size) !important;
-  background-position: var(--body-background-position) !important;
-  background-repeat: var(--body-background-repeat) !important;
-  box-shadow: var(--body-shadow) !important;
-  color: var(--text-color, $body-color) !important;
-  font-family: var(--font-body) !important;
-  transition: var(--transition-base);
-}
-
 // Neon Glow Effect (Cleaned Up)
 .neon-glow {
   box-shadow: none;
