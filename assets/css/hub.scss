@@ -4,14 +4,15 @@
 
 // Visualization Container
 #visualization-container {
-  margin: 2rem auto;
-  max-width: 1400px;
-  padding: 2rem;
-  @include glassmorphism;
-  border-radius: 15px;
-  box-shadow: var(--box-shadow);
-  position: relative;
-  overflow: hidden;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  padding: 20px;
+  border-radius: 10px;
+  margin-top: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 1200px;
   background: var(--card-bg);
 }
 
@@ -20,68 +21,52 @@
   transition: var(--transition-base);
 }
 
-.node .open-node {
-  fill: var(--secondary-color);
-  stroke: var(--white);
-  stroke-width: 2px;
-}
-
-.node .collapsed-node {
-  fill: var(--primary-color);
-  stroke: var(--white);
-  stroke-width: 2px;
-}
-
-.node .url-node {
-  fill: var(--accent-color);
-  stroke: var(--white);
-  stroke-width: 2px;
-}
-
-.node.active circle {
-  animation: breathe 3s ease-in-out infinite;
-}
-
-.node.active text {
-  fill: var(--accent-color);
-  font-weight: 700; // Bolder
-  animation: breathe 3s ease-in-out infinite; // Add breathing effect
-}
-
-.node text {
-  fill: var(--text-color);
-  font-family: var(--font-body);
-  font-size: 20px; // Larger for readability
-  font-weight: 600; // Bolder
-  cursor: pointer;
-  transition: var(--transition-base);
+// Hub Section (Each Category)
+.hub-section {
+  background-color: var(--secondary-background);
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  width: calc(33.333% - 1rem); // Three items per row with gap
+  min-width: 300px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
   &:hover {
-    fill: var(--primary-color);
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  }
+
+  h2 {
+    color: var(--heading-color);
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+    text-align: center;
+    font-family: var(--font-primary);
+    border-bottom: 2px solid var(--accent-color);
+    padding-bottom: 5px;
   }
 }
 
-path.link {
-  stroke: var(--secondary-color);
-  stroke-opacity: 0.6;
-  stroke-width: 3px;
-  transition: stroke-opacity 0.3s ease;
-  filter: none; // Remove the black shadow
-  &:hover {
-    stroke-opacity: 1;
+// Hub Links (List of URLs)
+.hub-links {
+  list-style: none;
+  padding: 0;
+
+  li {
+    margin-bottom: 10px;
+  }
+
+  a {
+    color: var(--text-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+    font-family: var(--font-body);
+    font-size: 1.1rem;
+    &:hover {
+      color: var(--primary-color);
+      text-decoration: underline;
+    }
   }
 }
-
-.firework-particle {
-  position: absolute;
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  opacity: 1;
-  pointer-events: none;
-  z-index: 1000;
-  background: var(--accent-color);
-}
-
 // Hero Section
 .hero-message {
   text-align: center;
@@ -154,6 +139,11 @@ path.link {
   }
 }
 
+// Media Query for Mobile Responsiveness
+@media (max-width: 768px) {
+  .hub-section {
+    width: calc(50% - 1rem); // Two items per row on medium screens
+  }
 // Responsive Adjustments
 @media (max-width: 768px) {
   #visualization-container {
@@ -200,3 +190,8 @@ path.link {
     font-size: 14px;
   }
 }
+
+@media (max-width: 480px) {
+  .hub-section {
+    width: 100%; // One item per row on small screens
+  }

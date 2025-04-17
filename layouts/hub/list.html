@@ -37,12 +37,14 @@
 {{ end }}
 
 {{ define "scripts" }}
-    {{ $d3 := resources.Get "js/d3.v7.min.js" | minify | fingerprint }}
-    <script src="{{ $d3.Permalink }}" integrity="{{ $d3.Data.Integrity }}"></script>
     <script>
         window.hubData = {
             lang: {{ .Language.Lang | jsonify | safeJS }},
-            root: {{ index .Site.Data.hub "entree" | jsonify | safeJS }}
+            {{ if eq .Language.Lang "en" }}
+                sections: {{ index .Site.Data.hub "en" | jsonify | safeJS }}
+            {{ else if eq .Language.Lang "fa" }}
+                sections: {{ index .Site.Data.hub "fa" | jsonify | safeJS }}
+            {{ end }}
         };
     </script>
     {{ $hub := resources.Get "js/hub.js" | minify | fingerprint }}
