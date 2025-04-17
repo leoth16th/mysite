@@ -11,7 +11,7 @@ resources:
 teaser_title: "Discover the General English Resource Hub"
 teaser_text: "Access a dynamic hub with interactive tools and learning paths to improve your English."
 cta_text: "Explore the General English Hub Now"
-cta_link: "/general-english-hub"
+cta_link: "/hub"
 cta_subtext: "Want personalized language coaching?"
 cta_subtext_link: "/contact"
 cta_subtext_link_text: "Schedule a Consultation"

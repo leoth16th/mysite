@@ -11,7 +11,7 @@ resources:
 teaser_title: "Discover the Ultimate TOEFL Resource Hub"
 teaser_text: "Access a dynamic hub with specialized TOEFL tools and interactive learning paths."
 cta_text: "Explore the TOEFL Hub Now"
-cta_link: "/toefl-hub"
+cta_link: "/hub"
 cta_subtext: "Need personalized guidance?"
 cta_subtext_link: "/coaching"
 cta_subtext_link_text: "Schedule a 1-on-1 Consultation"
